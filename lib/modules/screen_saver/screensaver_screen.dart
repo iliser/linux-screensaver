@@ -1,14 +1,12 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:math' as math;
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:template/router.dart';
 import 'package:template/template_modules/components/about_dialog_list_tile.dart';
 import 'package:template/template_modules/components/custom_dialog.dart';
-import 'package:template/template_modules/localization/language_select.dart';
 import 'package:template/template_modules/theme/theme_select_list_tile.dart';
 
 import 'flutter_animated_switcher.dart';
@@ -183,7 +181,7 @@ class _ClockState extends State<_Clock> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final backgroundColor = colorScheme.surface;
+    // final backgroundColor = colorScheme.surface;
     final color = colorScheme.onSurface;
     final style = TextStyle(
       fontFamily: 'Fira Code',
@@ -237,21 +235,21 @@ class _SettingsDialog extends StatelessWidget {
     return CustomDialogPage(
       child: Material(
         color: Theme.of(context).colorScheme.surface,
-        child: Column(
+        child: const Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SwitchListTile(
-              onChanged: (_) {},
-              value: true,
-              title: Text('Show clock'),
-            ),
-            ListTile(
-              title: Text('Word change delay'),
-            ),
-            ListTile(
-              title: Text('word list'),
-              trailing: Icon(Icons.text_fields_sharp),
-            ),
+            // SwitchListTile(
+            //   onChanged: (_) {},
+            //   value: true,
+            //   title: Text('Show clock'),
+            // ),
+            // ListTile(
+            //   title: Text('Word change delay'),
+            // ),
+            // ListTile(
+            //   title: Text('word list'),
+            //   trailing: Icon(Icons.text_fields_sharp),
+            // ),
             // LanguageSelectListTile(),
             ThemeSelectListTile(),
             AboutDialogListTile(),
