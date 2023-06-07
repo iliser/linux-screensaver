@@ -1,0 +1,42 @@
+{
+    "Guarded screen widget": {
+        "prefix": "guardedScreen",
+        "body": [
+            "class $1Screen extends GuardedScreen {",
+            "  const $1Screen({Key? key}) : super(key: key);",
+            "",
+            "  @override",
+            "  Widget build(BuildContext context, WidgetRef ref) {",
+            "    return Container();",
+            "  }",
+            "",
+            "  @override",
+            "  List<ScreenGuard> get guards => [",
+            "    $0",
+            "  ];",
+            "}",
+            ""
+        ],
+        "description": "Guarded screen widget"
+    },
+    "Guarded widget": {
+        "prefix": "guardedWidget",
+        "body": [
+            "class $1 extends GuardedWidget {",
+            "  const $1({Key? key}) : super(key: key);",
+            "",
+            "  @override",
+            "  Widget build(BuildContext context, WidgetRef ref) {",
+            "    return Container();",
+            "  }",
+            "",
+            "  @override",
+            "  List<WidgetGuard> get guards => [",
+            "    $0",
+            "  ];",
+            "}",
+            ""
+        ],
+        "description": "Guarded widget"
+    }
+}

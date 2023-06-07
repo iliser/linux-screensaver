@@ -1,0 +1,118 @@
+{
+  "helloWorld": "П. Мир!",
+  "newVersionSnackBarTitle": "Доступна новая версия.",
+  "newVersionSnackBarInstall": "Установить",
+  "languageSelectTitle": "Язык",
+  "languageSelectChangeTitle": "Выберите язык",
+  "_pluralFix": {
+    "one": "one",
+    "few": "few"
+  },
+  "guarded": {
+    "loadingMessage": "Загрузка...",
+    "loadingTitle": "Загрузка",
+    "emptyMessage": "К сожалению здесь ещё ничего нет.",
+    "generalErrorMessage": "Упс... Что то пошло не так.",
+    "generalErrorTitle": "Ошибка"
+  },
+  "networkErrors": {
+    "clientData": {
+      "code": "400",
+      "title": "Неверный запрос",
+      "description": "К сожалению, введенные данные не могут быть обработаны сервером.\n\nПриносим свои извинения за сложившуюся ситуацию, наша команда уже знает об этом и дорабатывает интерфейс, чтобы подобные ошибки больше не повторялись."
+    },
+    "unathorized": {
+      "code": "401",
+      "title": "Не Авторизован",
+      "description": "Вы должны войти в аккаунт для совершения этого действия."
+    },
+    "forbiden": {
+      "code": "403",
+      "title": "Доступ Запрещён",
+      "description": "У вас недостаточно прав."
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Не Найдено",
+      "description": "Не удалось найти интересующий вас объект."
+    },
+    "unprocessableData": {
+      "code": "422",
+      "title": "Неверный запрос",
+      "description": "К сожалению, введенные данные не могут быть обработаны сервером.\n\nПриносим свои извинения за сложившуюся ситуацию, наша команда уже знает об этом и дорабатывает интерфейс, чтобы подобные ошибки больше не повторялись."
+    },
+    "tooManyRequest": {
+      "code": "429",
+      "title": "Слишком много запросов",
+      "description": "От вас поступает слишком много запросов.\nВзаимодействие с сервером будут временно ограничено."
+    },
+    "serverError": {
+      "code": "5XX",
+      "title": "Ошибка Сервера",
+      "description": "К сожалению, при обработке вашего запроса на сервере произошла ошибка.\n\nПриносим свои извинения за сложившуюся ситуацию, наша команда уже знает об этой ошибке и в ближайшее время исправит ее."
+    },
+    "serviceUnavailable": {
+      "code": "503",
+      "title": "Сервер недоступен",
+      "description": "В данный момент сервер не доступен или перегружен.\n\nПриносим свои извинения за сложившуюся ситуацию, наша команда уже знает об этой ошибке и в ближайшее время исправит ее."
+    },
+    "socketError": {
+      "code": "icon.no_connection",
+      "title": "Соединение сброшенно",
+      "description": "Не удалось установить подключение к серверу."
+    },
+    "sendTimeout": {
+      "code": "icon.no_connection",
+      "title": "Передача данных прервана",
+      "description": "Истекло время на передачу данных на сервер."
+    },
+    "recieveTimeout": {
+      "code": "icon.no_connection",
+      "title": "Получение данных прервано",
+      "description": "Истекло время ожидания данных от сервера."
+    },
+    "connectionTimeout": {
+      "code": "icon.no_connection",
+      "title": "Сервер не отвечает",
+      "description": "Истекло время ожидания ответа от сервера."
+    },
+    "connectionError": {
+      "code": "icon.no_connection",
+      "title": "Ошибка подключения",
+      "description": "Произошла ошибка во время подключения к серверу."
+    },
+    "badCertificate": {
+      "code": "",
+      "title": "Небезопасное соединение",
+      "description": "Не удалось установить безопасное соединение с сервером."
+    },
+    "jsonParse": {
+      "code": "",
+      "title": "Ошибка Разбора Данных",
+      "description": "Ошибка при разборе данных с сервера."
+    },
+    "unknownError": {
+      "code": "WTF",
+      "title": "Неизвестная ошибка",
+      "description": "Что то пошло совсем не по плану..."
+    }
+  },
+  "theme": {
+    "chageThemeTitle": "Изменить тему приложения",
+    "systemTheme": "Системная тема",
+    "lightThemeTitle": "Светлая тема",
+    "darkThemeTitle": "Тёмная тема",
+    "darkThemeOledTitle": "Тёмная тема",
+    "darkThemeOledHint": "*OLED friendly"
+  },
+  "systemLanguage": "Язык системы",
+  "aboutDialog": {
+    "licence": "Лицензии",
+    "developedBy": "Разработанно",
+    "listTitle": "О приложение",
+    "version": "Версия ${version} , сборка ${build}",
+    "developerName": "@iliser",
+    "developerUrl": "https://github.com/iliser",
+    "developerSubtitle": "from Flutter of mind to app"
+  }
+}

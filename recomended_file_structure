@@ -1,0 +1,53 @@
+# project ./lib recomended file structure v2
+./lib 
+│   
+├── common
+│   │   # reusable components specific for this application
+│   ├── components
+│   │    # Widgets used across application, like custom button, icons, etc.
+│   ├── models
+│   │    # Providers used across application,
+│   ├── networks
+│   │    # Networks classes used across app
+│   └── providers
+│        # Models used across app
+├── config
+│   │   # configs for different build enviroments
+│   ├── debug.config.dart
+│   ├── local.config.dart
+│   └── production.config.dart
+├── i18n
+│   ├── $strings_en.i18n.json
+│   ├── $strings_de.i18n.json
+│   ├── strings.g.dart
+│   ├── strings.i18n.json
+│   ├── $strings_ru.i18n.json -> i18n/strings.i18n.json
+│   └── localizable_packages.dart
+│        # file that changes only by adding package localization change
+├── modules
+│   │   # reusable modules specific for this application
+│   │   # modules is a set of highly coupled functionalities that implement specific business logic and can be reused in limited context
+│   │   # while `./common` is generic componets that does't implement complicated behavior
+│   ├── $complicate_module_name
+│   │   ├── $complicate_module_name.screen.dart
+│   │   ├── components
+│   │   │    # Widgets used in module, like custom button, icons, etc.
+│   │   ├── models
+│   │   │    # Models used in module
+│   │   ├── networks
+│   │   │    # Networks classes used in module
+│   │   ├── providers
+│   │   │    # Providers used in module 
+│   │   └── screens
+│   │        # modules screens
+│   └── $simple_module_name
+│       ├── $simple_module_name.model.dart
+│       ├── $simple_module_name.network.dart
+│       ├── $simple_module_name.provider.dart
+│       └── $simple_module_name.screen.dart
+├── themes
+│   │   # files for define application themes that affect all app visual
+│   └── themes.dart # export all themes in `applicationThemes` variable
+└── template_modules
+     # modules that belongs to template and must not be changed in application project
+     # this files is rarely changes and its candidate for extraction to separate package

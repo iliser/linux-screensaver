@@ -1,0 +1,28 @@
+{
+    "Network with authorization snippet": {
+        "prefix": "authNetwork",
+        "body": [
+            "class $1Network extends AuthNetworkBase {",
+            "  $1Network.value({super.tag, super.authValue}) : super.value();",
+            "",
+            "  $0",
+            "}",
+            ""
+        ],
+        "description": "Network with authorization snippet"
+    },
+    "Simple network snippet": {
+        "prefix": "network",
+        "body": [
+            "class $1Network extends NetworkBase {",
+            "  $1Network.value({",
+            "    SyncParametrizedNetworkTag? tag,",
+            "  });",
+            "",
+            "  $0",
+            "}",
+            ""
+        ],
+        "description": "Simple network snippet"
+    },
+}

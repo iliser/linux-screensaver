@@ -1,0 +1,8 @@
+# if you want single splash just put same value to normal and dark else script is broke
+flutter_native_splash:
+  color: '#EBEDEE'
+  color_dark: '#000000'
+  image: assets/config/splash.png
+  image_dark: assets/config/splash_dark.png
+  android: true
+  ios: true

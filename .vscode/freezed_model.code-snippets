@@ -1,0 +1,37 @@
+{
+	"Freezed model with imports": {
+		"prefix": "fi_model",
+		"body": [
+			"import 'package:freezed_annotation/freezed_annotation.dart';",
+			"",
+			"part '${TM_FILENAME_BASE}.freezed.dart';",
+			"part '${TM_FILENAME_BASE}.g.dart';",
+			"",
+			"@freezed",
+			"class $1Model with _$$1Model {",
+			"  const $1Model._();",
+			"",
+			"  const factory $1Model(${2}) = _Data;",
+			"",
+			"  factory $1Model.fromJson(Map<String, dynamic> json) =>",
+			"      _$$1ModelFromJson(json);",
+			"}"
+		],
+		"description": "Freezed model with imports"
+	},
+	"Freezed model": {
+		"prefix": "f_model",
+		"body": [
+			"@freezed",
+			"class $1Model with _$$1Model {",
+			"  const $1Model._();",
+			"",
+			"  const factory $1Model(${2}) = _Data;",
+			"",
+			"  factory $1Model.fromJson(Map<String, dynamic> json) =>",
+			"      _$$1ModelFromJson(json);",
+			"}"
+		],
+		"description": "Freezed model"
+	},
+}

@@ -1,0 +1,35 @@
+# https://pub.dev/packages/build_config
+
+# build.yaml
+global_options:
+  freezed:freezed:
+    runs_before:
+      - hive_generator:hive_generator
+  hive_generator:hive_generator:
+    runs_before:
+      - json_serializable:json_serializable
+
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          checked: true
+          explicit_to_json: true
+          include_if_null: false
+          any_map: true
+      slang_build_runner:
+        options:
+          input_directory: lib/i18n
+          base_locale: ru
+          translation_class_visibility: public
+          fallback_strategy: base_locale
+          locale_handling: false
+          interfaces:
+            I18NErrorDescription: networkErrors.*
+      hive_generator:hive_generator:
+        enabled: true
+      auto_route_generator:autoRouteGenerator:
+        generate_for:
+          include:
+            - lib/router.dart

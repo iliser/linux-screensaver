@@ -1,0 +1,3 @@
+application_name: "Massa-FAT"
+application_id: "com.massa.fat"
+deep_link_host: "dl_sample.com"

@@ -1,0 +1,22 @@
+include: package:flutter_lints/flutter.yaml
+  
+analyzer:
+  plugins:
+    - custom_lint
+  exclude:
+    - "**/*.gr.dart"
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - lib/generated_plugin_registrant.dart
+
+linter:
+  rules:
+    - unawaited_futures
+
+    - require_trailing_commas
+    - cancel_subscriptions
+    - close_sinks
+    - sized_box_shrink_expand
+
+    - sort_constructors_first
+    - unnecessary_await_in_return

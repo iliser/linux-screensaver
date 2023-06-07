@@ -1,0 +1,30 @@
+{
+    "Persistent JSON provider": {
+        "prefix": "persistentJsonProvider",
+        "body": [
+            "final $1Provider = PersistentStateProvider<$2>(",
+            "  (ref) => () => $0,",
+            "  store: HiveJsonStore(",
+            "    fromJson: (json) => $2.fromJson(json),",
+            "    toJson: (value) => value.toJson(),",
+            "  ),",
+            "  name: '$1',",
+            ");"
+        ],
+        "description": "Persistent JSON provider"
+    },
+    "Persistent string provider": {
+        "prefix": "persistentProvider",
+        "body": [
+          "final $1Provider = PersistentStateProvider<$2>(",
+          "  (ref) => () => $4,",
+          "  store: HiveStringStore(",
+          "    decode: (string) => $3,",
+          "    encode: (value) => value.toString(),",
+          "  ),",
+          "  name: '$1',",
+          ");"
+        ],
+        "description": "Persistent string provider"
+      }
+}

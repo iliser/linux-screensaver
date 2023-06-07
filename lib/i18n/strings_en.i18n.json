@@ -1,0 +1,118 @@
+{
+  "helloWorld": "П. Мир!",
+  "newVersionSnackBarTitle": "New version is avaliable",
+  "newVersionSnackBarInstall": "Install",
+  "languageSelectTitle": "Language",
+  "languageSelectChangeTitle": "Choose language",
+  "_pluralFix": {
+    "one": "one",
+    "few": "few"
+  },
+  "guarded": {
+    "loadingMessage": "Loading...",
+    "loadingTitle": "Loading",
+    "emptyMessage": "Unfortunately, there is nothing here yet.",
+    "generalErrorMessage": "Ooops... Something went wrong.",
+    "generalErrorTitle": "Error"
+  },
+  "networkErrors": {
+    "clientData": {
+      "code": "400",
+      "title": "Bad Request",
+      "description": "Unfortunately, the entered data cannot be processed by the server.\n\nWe apologize for the situation, our team is already aware of this and is finalizing the interface so that such errors do not happen again."
+    },
+    "unathorized": {
+      "code": "401",
+      "title": "Not Authorized",
+      "description": "You must be authorized to complete this action."
+    },
+    "forbiden": {
+      "code": "403",
+      "title": "Access Denied",
+      "description": "You don't have access to this"
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Not Found",
+      "description": "Cannot find object you looking at."
+    },
+    "unprocessableData": {
+      "code": "422",
+      "title": "Bad Request",
+      "description": "Unfortunately, the entered data cannot be processed by the server.\n\nWe apologize for the situation, our team is already aware of this and is finalizing the interface so that such errors do not happen again."
+    },
+    "tooManyRequest": {
+      "code": "429",
+      "title": "Too Many Requests",
+      "description": "Too many requests coming from your device.\nInteraction with the server will be temporarily limited."
+    },
+    "serverError": {
+      "code": "5XX",
+      "title": "Server Error",
+      "description": "Unfortunately, an error occurred on the server while processing your request.\n\nWe apologize for this situation, our team is already aware about this error and fix it soon."
+    },
+    "serviceUnavailable": {
+      "code": "503",
+      "title": "Server unavailable",
+      "description": "The server is currently unavailable or overloaded.\n\nWe apologize for this situation, our team is already aware about this error and fix it soon."
+    },
+    "socketError": {
+      "code": "icon.no_connection",
+      "title": "Socket Error",
+      "description": "Can't connect to server."
+    },
+    "sendTimeout": {
+      "code": "icon.no_connection",
+      "title": "Send Timeout",
+      "description": "Connection lost while sending data to server."
+    },
+    "recieveTimeout": {
+      "code": "icon.no_connection",
+      "title": "Recieve Timeout",
+      "description": "Connection lost while receiving data from server."
+    },
+    "connectionTimeout": {
+      "code": "icon.no_connection",
+      "title": "Connection Timeout",
+      "description": "Server not responding."
+    },
+    "connectionError": {
+      "code": "icon.no_connection",
+      "title": "Connection error",
+      "description": "Error while connecting to server."
+    },
+    "badCertificate": {
+      "code": "",
+      "title": "Unsecure connection",
+      "description": "Can't securely connect to the server"
+    },
+    "jsonParse": {
+      "code": "",
+      "title": "Json Parse Error",
+      "description": "Error while parsing json data"
+    },
+    "unknownError": {
+      "code": "WTF",
+      "title": "Unknown Error",
+      "description": "Something went realy wrong right now..."
+    }
+  },
+  "theme": {
+    "chageThemeTitle": "Change application theme",
+    "systemTheme": "System theme",
+    "lightThemeTitle": "Light theme",
+    "darkThemeTitle": "Dark theme",
+    "darkThemeOledTitle": "Dark theme",
+    "darkThemeOledHint": "*OLED friendly"
+  },
+  "systemLanguage": "System language",
+  "aboutDialog": {
+    "licence": "Licence",
+    "developedBy": "Developed by",
+    "listTitle": "About app",
+    "version": "Version ${version} , build ${build}",
+    "developerName": "@iliser",
+    "developerUrl": "https://github.com/iliser",
+    "developerSubtitle": "from Flutter of mind to app"
+  }
+}

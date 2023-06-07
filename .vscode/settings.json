@@ -1,0 +1,19 @@
+{
+    // need to execute task with user defined .bashrc
+    "terminal.integrated.shellArgs.linux": [
+        "-i"
+    ],
+    "i18n-ally.localesPaths": [
+        "lib/i18n"
+    ],
+    "i18n-ally.pathMatcher": "strings_{locale}.i18n.json",
+    "i18n-ally.keystyle": "nested",
+    "i18n-ally.sourceLanguage": "ru",
+    "i18n-ally.displayLanguage": "ru",
+    "i18n-ally.editor.preferEditor": true,
+    "i18n-ally.refactor.templates": [
+        {
+            "template": "L.{key}"
+        },
+    ]
+}

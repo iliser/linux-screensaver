@@ -1,0 +1,6 @@
+<!-- https://developer.android.com/training/articles/security-config#CleartextTrafficPermitted -->
+<base-config cleartextTrafficPermitted="false">
+    <trust-anchors>
+        <certificates src="system" />
+    </trust-anchors>
+</base-config>
