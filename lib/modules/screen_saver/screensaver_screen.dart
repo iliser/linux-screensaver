@@ -5,6 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:template/router.dart';
 import 'package:template/template_modules/components/about_dialog_list_tile.dart';
 import 'package:template/template_modules/components/custom_dialog.dart';
 import 'package:template/template_modules/theme/theme_select_list_tile.dart';
@@ -94,12 +95,8 @@ class _ScreenSaverScreenState extends State<ScreenSaverScreen> {
       body: CallbackShortcuts(
         bindings: {
           const SingleActivator(LogicalKeyboardKey.enter): _next,
-          const SingleActivator(LogicalKeyboardKey.comma, control: true): () {
-            showAnimatedDialog(
-              context: context,
-              child: const _SettingsDialog(),
-            );
-          },
+          const SingleActivator(LogicalKeyboardKey.comma, control: true): () =>
+              context.router.push(const SettingsRoute()),
         },
         child: Focus(
           autofocus: true,
@@ -224,38 +221,5 @@ class _Weather extends StatelessWidget {
       fontWeight: FontWeight.w400,
     );
     return Text('21 °C', style: style);
-  }
-}
-
-class _SettingsDialog extends StatelessWidget {
-  const _SettingsDialog({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomDialogPage(
-      child: Material(
-        color: Theme.of(context).colorScheme.surface,
-        child: const Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // SwitchListTile(
-            //   onChanged: (_) {},
-            //   value: true,
-            //   title: Text('Show clock'),
-            // ),
-            // ListTile(
-            //   title: Text('Word change delay'),
-            // ),
-            // ListTile(
-            //   title: Text('word list'),
-            //   trailing: Icon(Icons.text_fields_sharp),
-            // ),
-            // LanguageSelectListTile(),
-            ThemeSelectListTile(),
-            AboutDialogListTile(),
-          ],
-        ),
-      ),
-    );
   }
 }

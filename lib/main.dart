@@ -91,6 +91,7 @@ class _RouterWidget extends ConsumerStatefulWidget {
 class _RouterWidgetState extends ConsumerState<_RouterWidget> {
   @override
   void initState() {
+    // wait first frame and then display window
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await windowManager.show();
       await windowManager.focus();
