@@ -114,5 +114,8 @@
     "developerName": "@iliser",
     "developerUrl": "https://github.com/iliser",
     "developerSubtitle": "from Flutter of mind to app"
+  },
+  "settings": {
+    "showClock": "Show clock"
   }
 }

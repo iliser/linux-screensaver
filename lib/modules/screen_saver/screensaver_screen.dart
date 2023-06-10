@@ -4,10 +4,15 @@ import 'dart:math' as math;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:template/modules/screensaver_config/screensaver_config.dart';
+import 'package:template/modules/screensaver_config/screensaver_config.provider.dart';
 import 'package:template/router.dart';
 import 'package:template/template_modules/components/about_dialog_list_tile.dart';
 import 'package:template/template_modules/components/custom_dialog.dart';
+import 'package:template/template_modules/guards/guard.dart';
+import 'package:template/template_modules/guards/guarded/guarded_screen.dart';
 import 'package:template/template_modules/theme/theme_select_list_tile.dart';
 
 import 'flutter_animated_switcher.dart';
@@ -26,8 +31,28 @@ extension<T> on List<T> {
 }
 
 @RoutePage(name: 'ScreenSaverRoute')
+class ScreenSaverScreenGuarded extends GuardedScreen {
+  const ScreenSaverScreenGuarded({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final config = ref.watch(screensaverConfigProvider).requireValue;
+    return ScreenSaverScreen(config: config);
+  }
+
+  @override
+  List<ScreenGuard> get guards => [
+        AsyncGuard([screensaverConfigProvider])
+      ];
+}
+
 class ScreenSaverScreen extends StatefulWidget {
-  const ScreenSaverScreen({super.key});
+  const ScreenSaverScreen({
+    super.key,
+    required this.config,
+  });
+
+  final ScreensaverConfig config;
 
   @override
   State<ScreenSaverScreen> createState() => _ScreenSaverScreenState();
@@ -139,7 +164,7 @@ class _ScreenSaverScreenState extends State<ScreenSaverScreen> {
                   ],
                 ),
               ),
-              const _Clock(),
+              if (widget.config.showClock) const _Clock(),
             ],
           ),
         ),

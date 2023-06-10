@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:template/globals.dart';
+import 'package:template/modules/screensaver_config/screensaver_config.provider.dart';
 import 'package:template/template_modules/components/about_dialog_list_tile.dart';
 import 'package:template/template_modules/components/custom_dialog.dart';
 import 'package:template/template_modules/theme/theme_select_list_tile.dart';
@@ -15,11 +18,7 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // SwitchListTile(
-            //   onChanged: (_) {},
-            //   value: true,
-            //   title: Text('Show clock'),
-            // ),
+            _ShowClockListTile(),
             // ListTile(
             //   title: Text('Word change delay'),
             // ),
@@ -33,6 +32,23 @@ class SettingsScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ShowClockListTile extends ConsumerWidget {
+  const _ShowClockListTile({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final t = ref.watch(localizationProvider);
+    return SwitchListTile(
+      value:
+          ref.watch(screensaverConfigProvider).valueOrNull?.showClock ?? false,
+      onChanged: (v) => ref
+          .read(screensaverConfigProvider.notifier)
+          .update((value) => value.copyWith(showClock: v)),
+      title: Text(t.settings.showClock),
     );
   }
 }
