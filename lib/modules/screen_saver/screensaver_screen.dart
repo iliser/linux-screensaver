@@ -9,11 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:template/modules/screensaver_config/screensaver_config.dart';
 import 'package:template/modules/screensaver_config/screensaver_config.provider.dart';
 import 'package:template/router.dart';
-import 'package:template/template_modules/components/about_dialog_list_tile.dart';
-import 'package:template/template_modules/components/custom_dialog.dart';
 import 'package:template/template_modules/guards/guard.dart';
-import 'package:template/template_modules/guards/guarded/guarded_screen.dart';
-import 'package:template/template_modules/theme/theme_select_list_tile.dart';
 
 import 'flutter_animated_switcher.dart';
 
@@ -59,13 +55,8 @@ class ScreenSaverScreen extends StatefulWidget {
 }
 
 class _ScreenSaverScreenState extends State<ScreenSaverScreen> {
-  final List<String> leftWords = ["BE", "STAY"];
-  final List<String> rightWords = [
-    "PERSISTENT",
-    "YOURSELF",
-    "FOCUSED",
-    "PATIENT"
-  ];
+  List<String> get leftWords => widget.config.leftWords;
+  List<String> get rightWords => widget.config.rightWords;
 
   late String left = leftWords.first;
   late String right = rightWords.first;

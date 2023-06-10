@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template/globals.dart';
 import 'package:template/modules/screensaver_config/screensaver_config.provider.dart';
+import 'package:template/router.dart';
 import 'package:template/template_modules/components/about_dialog_list_tile.dart';
 import 'package:template/template_modules/components/custom_dialog.dart';
 import 'package:template/template_modules/theme/theme_select_list_tile.dart';
@@ -18,6 +19,7 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            _WordListListTile(),
             _ShowClockListTile(),
             // ListTile(
             //   title: Text('Word change delay'),
@@ -37,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
 }
 
 class _ShowClockListTile extends ConsumerWidget {
-  const _ShowClockListTile({super.key});
+  const _ShowClockListTile();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,6 +51,20 @@ class _ShowClockListTile extends ConsumerWidget {
           .read(screensaverConfigProvider.notifier)
           .update((value) => value.copyWith(showClock: v)),
       title: Text(t.settings.showClock),
+    );
+  }
+}
+
+class _WordListListTile extends ConsumerWidget {
+  const _WordListListTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final t = ref.watch(localizationProvider);
+    return ListTile(
+      title: Text(t.settings.editWordsListTile),
+      trailing: const Icon(Icons.navigate_next),
+      onTap: () => context.router.push(const WordListSettingsRoute()),
     );
   }
 }

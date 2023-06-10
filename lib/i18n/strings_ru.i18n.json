@@ -116,6 +116,8 @@
     "developerSubtitle": "from Flutter of mind to app"
   },
   "settings": {
-    "showClock": "Отображать часы"
+    "showClock": "Отображать часы",
+    "editWordList": "Редактирование списка слов",
+    "editWordsListTile": "Список слов"
   }
 }
