@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:optics/optics/optics.dart';
 import 'package:template/modules/screensaver_config/screensaver_config.dart';
 import 'package:template/modules/screensaver_config/screensaver_config.provider.dart';
 import 'package:template/template_modules/guards/guard.dart';
@@ -48,44 +49,17 @@ class _WordList extends ConsumerStatefulWidget {
 }
 
 class _WordListState extends ConsumerState<_WordList> {
-  ScreensaverConfig get _config =>
-      ref.read(screensaverConfigProvider).requireValue;
-
-  AsyncValue<ScreensaverConfig> Function(
-    ScreensaverConfig Function(ScreensaverConfig value) update,
-  ) get _update => ref.read(screensaverConfigProvider.notifier).update;
-
-  late final controller = TextEditingController(
-    text: (widget.isRight ? _config.rightWords : _config.leftWords).join('\n'),
-  );
-
-  @override
-  void initState() {
-    controller.addListener(() {
-      final words = controller.text.split('\n');
-
-      _update(
-        (v) => widget.isRight
-            ? v.copyWith(rightWords: words)
-            : v.copyWith(leftWords: words),
-      );
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final _lens = screensaverConfigProvider.lens;
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          controller: controller,
+        child: TextFieldL(
+          lens:
+              (widget.isRight ? _lens.rightWords : _lens.leftWords).join('\n'),
+          // controller: controller,
           maxLines: 300,
           decoration: const InputDecoration(
             filled: true,

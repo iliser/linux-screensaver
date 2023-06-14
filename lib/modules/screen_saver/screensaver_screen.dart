@@ -108,55 +108,61 @@ class _ScreenSaverScreenState extends State<ScreenSaverScreen> {
     );
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: CallbackShortcuts(
-        bindings: {
-          const SingleActivator(LogicalKeyboardKey.enter): _next,
-          const SingleActivator(LogicalKeyboardKey.comma, control: true): () =>
-              context.router.push(const SettingsRoute()),
+      body: InkWell(
+        onTap: _next,
+        onLongPress: () {
+          context.router.push(const SettingsRoute());
         },
-        child: Focus(
-          autofocus: true,
-          child: Stack(
-            children: [
-              Center(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      child: FlutterAnimatedSwitcher.fromAnimation(
-                        animation: SwitchAnimation.flyUp(),
-                        child: Text(
-                          left,
-                          key: ValueKey('left/$left'),
-                          style: style,
-                          textAlign: TextAlign.end,
+        child: CallbackShortcuts(
+          bindings: {
+            const SingleActivator(LogicalKeyboardKey.enter): _next,
+            const SingleActivator(LogicalKeyboardKey.comma, control: true):
+                () => context.router.push(const SettingsRoute()),
+          },
+          child: Focus(
+            autofocus: true,
+            child: Stack(
+              children: [
+                Center(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(
+                        child: FlutterAnimatedSwitcher.fromAnimation(
+                          animation: SwitchAnimation.flyUp(),
+                          child: Text(
+                            left,
+                            key: ValueKey('left/$left'),
+                            style: style,
+                            textAlign: TextAlign.end,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Container(
-                        height: 56,
-                        width: 4,
-                        color: colorScheme.onSurface,
-                      ),
-                    ),
-                    Expanded(
-                      child: FlutterAnimatedSwitcher.fromAnimation(
-                        animation: SwitchAnimation.flyDown(),
-                        child: Text(
-                          right,
-                          key: ValueKey('right/$right'),
-                          style: style,
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Container(
+                          height: 56,
+                          width: 4,
+                          color: colorScheme.onSurface,
                         ),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        child: FlutterAnimatedSwitcher.fromAnimation(
+                          animation: SwitchAnimation.flyDown(),
+                          child: Text(
+                            right,
+                            key: ValueKey('right/$right'),
+                            style: style,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              if (widget.config.showClock) const _Clock(),
-            ],
+                if (widget.config.showClock) const _Clock(),
+              ],
+            ),
           ),
         ),
       ),

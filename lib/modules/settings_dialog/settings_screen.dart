@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:optics/optics/optics.dart';
 import 'package:template/globals.dart';
+import 'package:template/modules/screensaver_config/screensaver_config.dart';
 import 'package:template/modules/screensaver_config/screensaver_config.provider.dart';
 import 'package:template/router.dart';
 import 'package:template/template_modules/components/about_dialog_list_tile.dart';
@@ -44,12 +46,11 @@ class _ShowClockListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = ref.watch(localizationProvider);
-    return SwitchListTile(
-      value:
-          ref.watch(screensaverConfigProvider).valueOrNull?.showClock ?? false,
-      onChanged: (v) => ref
-          .read(screensaverConfigProvider.notifier)
-          .update((value) => value.copyWith(showClock: v)),
+
+    final r = screensaverConfigProvider.lens.leftWords.join;
+
+    return SwitchListTileL(
+      lens: screensaverConfigProvider.lens.showClock,
       title: Text(t.settings.showClock),
     );
   }

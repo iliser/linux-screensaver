@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,8 +8,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:template/globals.dart';
 import 'package:template/template_modules/init/hive_init.dart';
-import 'package:template/template_modules/init/onesignal_init.dart';
-import 'package:template/template_modules/init/quick_actions_init.dart';
 import 'package:template/template_modules/init/sentry_init.dart';
 import 'package:template/template_modules/theme/theme_provider.dart';
 import 'package:template/template_modules/update.dart';
@@ -20,6 +20,51 @@ import 'template_modules/localization/language_provider.dart';
 // export for screenshot capture
 export 'globals.dart' show gAppRouter, showDebugBanner;
 
+abstract class WindowManager {
+  Future<void> ensureInitialized();
+  Future<void> waitReady();
+  Future<void> focus();
+}
+
+class MobileWindowManager implements WindowManager {
+  @override
+  Future<void> ensureInitialized() async {}
+
+  @override
+  Future<void> focus() async {}
+
+  @override
+  Future<void> waitReady() async {}
+}
+
+class DesktopWindowManager implements WindowManager {
+  @override
+  Future<void> ensureInitialized() {
+    return windowManager.ensureInitialized();
+  }
+
+  @override
+  Future<void> focus() async {
+    await windowManager.show();
+    await windowManager.focus();
+  }
+
+  @override
+  Future<void> waitReady() {
+    WindowOptions windowOptions = const WindowOptions(
+      fullScreen: true,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.hidden,
+    );
+
+    return windowManager.waitUntilReadyToShow(windowOptions);
+  }
+}
+
+final myWindowManager =
+    (Platform.isLinux || Platform.isMacOS || Platform.isWindows)
+        ? DesktopWindowManager()
+        : MobileWindowManager();
 // TODO configure app signing
 
 // TODO https://flutter.dev/docs/development/ui/navigation/deep-linking#enable-deep-linking-on-ios
@@ -35,11 +80,11 @@ void main() async {
       WidgetsFlutterBinding.ensureInitialized();
 
       // Must add this line.
-      await windowManager.ensureInitialized();
+      await myWindowManager.ensureInitialized();
 
       await SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitDown,
-        DeviceOrientation.portraitUp,
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
       ]);
 
       config.applicationSupportDirectory =
@@ -56,13 +101,7 @@ void main() async {
         languageProvider.awaitInitialized(),
       ]);
 
-      WindowOptions windowOptions = const WindowOptions(
-        fullScreen: true,
-        skipTaskbar: false,
-        titleBarStyle: TitleBarStyle.hidden,
-      );
-
-      await windowManager.waitUntilReadyToShow(windowOptions);
+      await myWindowManager.waitReady();
 
       SentryFlutter.setAppStartEnd(DateTime.now());
 
@@ -92,10 +131,8 @@ class _RouterWidgetState extends ConsumerState<_RouterWidget> {
   @override
   void initState() {
     // wait first frame and then display window
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await windowManager.show();
-      await windowManager.focus();
-    });
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => myWindowManager.focus());
     checkUpdate();
     super.initState();
   }
