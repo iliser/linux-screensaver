@@ -86,6 +86,7 @@ void main() async {
         DeviceOrientation.landscapeRight,
         DeviceOrientation.landscapeLeft,
       ]);
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
       config.applicationSupportDirectory =
           await getApplicationSupportDirectory().then((e) => e.path);

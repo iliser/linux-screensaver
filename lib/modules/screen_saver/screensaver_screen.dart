@@ -107,8 +107,9 @@ class _ScreenSaverScreenState extends State<ScreenSaverScreen> {
       fontSize: 56,
     );
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Colors.black,
       body: InkWell(
+        focusColor: backgroundColor,
         onTap: _next,
         onLongPress: () {
           context.router.push(const SettingsRoute());

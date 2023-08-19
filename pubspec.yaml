@@ -59,7 +59,7 @@ dependencies:
   dio_smart_retry: ^5.0.0
 
   # error handling and report
-  sentry_flutter: ^7.4.1
+  sentry_flutter: ^7.9.0
 
   # notifications
   # lock version cause ios critical bug
@@ -103,7 +103,7 @@ dependencies:
   window_manager: ^0.3.4
 
   optics: 
-    path: /home/iliser/projects/plays/optics/
+    path: /home/iliser/projects/plays/optics/packages/optics
 
   # your application dependencies
 

@@ -1,7 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:riverpod_persistent_state/riverpod_persistent_state.dart';
 import 'package:template/globals.dart';
+
+final animationUseBlurProvider = PersistentStateProvider(
+  store: HiveStore(
+    boxName: 'config.animation.useBlur',
+    defaultValue: () => false,
+  ),
+);
 
 class CustomDialog {
   CustomDialog._();
@@ -88,7 +96,7 @@ class __CustomTransitionState extends State<_CustomTransition> {
         .animate(animation);
 
     final blurAnimation =
-        Tween<double>(begin: 0, end: 2).animate(widget.animation);
+        Tween<double>(begin: 0, end: 0.4).animate(widget.animation);
 
     return GestureDetector(
       onTap: () {
@@ -99,11 +107,11 @@ class __CustomTransitionState extends State<_CustomTransition> {
       },
       child: AnimatedBuilder(
         animation: blurAnimation,
-        builder: (context, child) => BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: blurAnimation.value,
-            sigmaY: blurAnimation.value,
-          ),
+        builder: (context, child) => ColoredBox(
+          color: Theme.of(context)
+              .colorScheme
+              .surface
+              .withOpacity(blurAnimation.value),
           child: child,
         ),
         child: FadeTransition(

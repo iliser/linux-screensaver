@@ -11,7 +11,10 @@ final screensaverConfigProvider = PersistentStateProvider(
 );
 
 extension ScreensaverConfigLenses<T> on RiverpodLens<T, ScreensaverConfig> {
-  RiverpodLens<T, bool> get showClock => proxyBySymbol(#showClock);
-  RiverpodLens<T, List<String>> get leftWords => proxyBySymbol(#leftWords);
-  RiverpodLens<T, List<String>> get rightWords => proxyBySymbol(#rightWords);
+  RiverpodLens<T, bool> get showClock =>
+      proxyBySymbol(#showClock, (v) => v.showClock);
+  RiverpodLens<T, List<String>> get leftWords =>
+      proxyBySymbol(#leftWords, (v) => v.leftWords);
+  RiverpodLens<T, List<String>> get rightWords =>
+      proxyBySymbol(#rightWords, (v) => v.rightWords);
 }
